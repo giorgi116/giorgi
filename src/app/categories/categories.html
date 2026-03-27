@@ -1,0 +1,6 @@
+<ul>
+    <li [class.current]="currentCategory == 0" (click)="changeCategories(0)">All</li>
+    @for (item of allcategories(); track $index) {
+    <li [class.current]="item.id == currentCategory" (click)="changeCategories(item.id)">{{item.name}} </li>
+    }
+</ul>

@@ -1,0 +1,30 @@
+<nav [class.menu-open]="menuOpen">
+  <div class="nav-brand" routerLink="/" (click)="closeMenu()">
+    <span class="brand-name"><i class="fa-solid fa-fire-flame-curved"></i>  Restaurant</span>
+    <span class="brand-sub">Fine Dining Restaurant</span>
+  </div>
+
+  <button class="hamburger" (click)="toggleMenu()" [class.active]="menuOpen" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+
+
+  <ul [class.open]="menuOpen">
+    <li routerLink="/" (click)="closeMenu()">Home</li>
+    @if (isLoggedIn()) {
+      <li routerLink="/kalata" (click)="closeMenu()">
+        <i class="fa-solid fa-bag-shopping"></i> Cart
+        @if (raodenoba() > 0) {
+          <span class="cart-count">{{ raodenoba() }}</span>
+        }
+      </li>
+      <li routerLink="/profile" (click)="closeMenu()"><i class="fa-regular fa-user"></i> Profile</li>
+      <li class="logout-btn" (click)="logout()"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</li>
+    } @else {
+      <li class="nav-login" routerLink="/auth" (click)="closeMenu()"><i class="fa-regular fa-user"></i> Sign In</li>
+    }
+  </ul>
+
+ 
+  <div class="nav-overlay" [class.visible]="menuOpen" (click)="closeMenu()"></div>
+</nav>

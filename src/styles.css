@@ -1,0 +1,77 @@
+/* ═══════════════════════════════════════════════════
+   EMBER & OAK — Editorial Magazine Redesign
+   Warm Terracotta · Geometric · Bold Typography
+═══════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&family=Bebas+Neue&display=swap');
+
+:root {
+  --cream:       #f7f2eb;
+  --cream-deep:  #ede5d8;
+  --parchment:   #e8dcc8;
+  --terracotta:  #c1522a;
+  --terra-light: #d96b3f;
+  --terra-dark:  #8f3518;
+  --charcoal:    #1e1a17;
+  --stone:       #6b5e52;
+  --stone-light: #a0917f;
+  --sage:        #7a8c6e;
+  --ink:         #2a2118;
+
+  --text-primary:   #1e1a17;
+  --text-secondary: #6b5e52;
+  --text-muted:     #a0917f;
+
+  --bg:          #f7f2eb;
+  --bg-warm:     #ede5d8;
+  --card-bg:     #ffffff;
+  --card-warm:   #faf6f0;
+
+  --border:      rgba(193, 82, 42, 0.2);
+  --border-soft: rgba(107, 94, 82, 0.12);
+
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-serif:   'Playfair Display', serif;
+  --font-body:    'DM Sans', sans-serif;
+
+  --r-sm: 3px;
+  --r-md: 8px;
+  --r-lg: 16px;
+  --r-xl: 24px;
+
+  --shadow-sm: 0 2px 12px rgba(30,26,23,0.08);
+  --shadow-md: 0 8px 32px rgba(30,26,23,0.12);
+  --shadow-lg: 0 20px 60px rgba(30,26,23,0.16);
+
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --t: 0.3s var(--ease);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--cream-deep); }
+::-webkit-scrollbar-thumb { background: var(--terracotta); border-radius: 3px; }
+::selection { background: var(--terracotta); color: white; }
+
+.rule { width: 48px; height: 3px; background: var(--terracotta); border-radius: 2px; }
+.rule-center { margin: 0 auto; }
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+}

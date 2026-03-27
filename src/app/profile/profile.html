@@ -1,0 +1,44 @@
+<div class="profile-page">
+
+  <div class="profile-bg">
+    <div class="profile-bg-glow"></div>
+  </div>
+
+  <div class="profile-content">
+
+    @if (myInfo().firstName) {
+      <div class="profile-card">
+
+        <div class="avatar-wrap">
+          <img [src]="myInfo().avatar" alt="Profile" class="avatar" />
+          <div class="avatar-ring"></div>
+        </div>
+
+        <div class="profile-info">
+          <p class="profile-eyebrow">Member Profile</p>
+          <h2 class="profile-name">{{ myInfo().firstName }} {{ myInfo().lastName }}</h2>
+          <div class="profile-rule"></div>
+          <p class="profile-email"><i class="fa-regular fa-envelope"></i> {{ myInfo().email }}</p>
+          @if (myInfo().phone) {
+            <p class="profile-detail"><i class="fa-solid fa-phone"></i> {{ myInfo().phone }}</p>
+          }
+          @if (myInfo().address) {
+            <p class="profile-detail"><i class="fa-solid fa-location-dot"></i> {{ myInfo().address }}</p>
+          }
+        </div>
+
+        <button class="btn-signout" (click)="signOut()">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> Sign Out
+        </button>
+
+      </div>
+    } @else {
+      <div class="profile-loading">
+        <div class="loader"></div>
+        <p>Loading your profile…</p>
+      </div>
+    }
+
+  </div>
+
+</div>

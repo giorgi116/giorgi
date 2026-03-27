@@ -1,0 +1,122 @@
+<section class="hero">
+  <div class="hero-left">
+    <span class="hero-deco-number">01</span>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Est. 2026 · Tbilisi, Georgia</p>
+      <h1 class="hero-title">A Symphony<br/><em>of Flavours</em></h1>
+      <div class="hero-rule"></div>
+      <p class="hero-subtitle">Seasonal ingredients. Timeless craft. Unforgettable evenings.</p>
+      <a class="hero-cta" (click)="scrollToMenu()">Explore Our Menu <i class="fa-solid fa-arrow-down"></i></a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&q=80" alt="Restaurant" class="hero-img" />
+    <div class="hero-badge">
+      <span class="hero-badge-num">5★</span>
+      <span class="hero-badge-label">Fine Dining</span>
+    </div>
+  </div>
+</section>
+
+<section class="menu-section" id="menu">
+  <div class="section-header">
+    <p class="section-eyebrow">Curated Selection</p>
+    <h2 class="section-title">Our Menu</h2>
+  </div>
+
+  <div class="categories-wrapper">
+    <app-categories></app-categories>
+  </div>
+
+  <main class="menu-body">
+    <button class="filter-toggle-btn" (click)="filterOpen = !filterOpen">
+      <i class="fa-solid fa-sliders"></i>
+      {{ filterOpen ? 'Hide Filters' : 'Show Filters' }}
+    </button>
+
+    <aside class="filter-panel" [class.collapsed]="!filterOpen">
+      <h3 class="filter-title"><i class="fa-solid fa-sliders"></i> Refine</h3>
+
+      <div class="filter-group">
+        <label class="filter-label">Spiciness Level</label>
+        <div class="spice-row">
+          <span class="spice-icons">
+            @for (n of [1,2,3,4]; track n) {
+              <i class="fa-solid fa-pepper-hot" [class.active]="spiciness >= n"></i>
+            }
+          </span>
+          <input type="range" min="-1" max="4" [(ngModel)]="spiciness" class="spice-range" />
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <label class="filter-label">Dietary</label>
+        <div class="toggle-row">
+          <label class="toggle-label">
+            <input type="checkbox" [(ngModel)]="nuts" class="toggle-input" />
+            <span class="toggle-track"><span class="toggle-thumb"></span></span>
+            Contains Nuts
+          </label>
+        </div>
+        <div class="toggle-row">
+          <label class="toggle-label">
+            <input type="checkbox" [(ngModel)]="vegeterian" class="toggle-input" />
+            <span class="toggle-track"><span class="toggle-thumb"></span></span>
+            Vegetarian
+          </label>
+        </div>
+      </div>
+
+      <div class="filter-actions">
+        <button class="btn-apply" (click)="filter()">Apply Filters</button>
+        <button class="btn-reset" (click)="showproducts()">Reset</button>
+      </div>
+    </aside>
+
+    <section class="products-grid">
+      @for (item of allproducts(); track item.id) {
+        <div class="product-card">
+          <div class="card-img-wrap">
+            <img [src]="item.image" [alt]="item.name" class="card-img" />
+            <div class="card-badges">
+              @if (item.vegeterian) {
+                <span class="badge badge-veg"><i class="fa-solid fa-leaf"></i></span>
+              }
+              @if (item.spiciness >= 3) {
+                <span class="badge badge-spicy"><i class="fa-solid fa-pepper-hot"></i></span>
+              }
+            </div>
+            <div class="card-overlay">
+              <button class="card-quick-add" (click)="addToCart(item)">
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3 class="card-name">{{ item.name }}</h3>
+            <div class="card-meta">
+              <span class="meta-spice">
+                @for (n of [1,2,3,4]; track n) {
+                  <i class="fa-solid fa-pepper-hot" [class.lit]="item.spiciness >= n"></i>
+                }
+              </span>
+              <span class="meta-tags">
+                <span class="tag" [class.tag-on]="item.nuts" [class.tag-off]="!item.nuts">Nuts</span>
+                <span class="tag" [class.tag-on]="item.vegeterian" [class.tag-off]="!item.vegeterian">Veg</span>
+              </span>
+            </div>
+            <div class="card-footer">
+              <span class="card-price">$ {{ item.price }}</span>
+              <button class="btn-cart" (click)="addToCart(item)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      }
+    </section>
+  </main>
+</section>
+
+<footer class="footer-strip">
+  <span class="footer-brand"><i class="fa-solid fa-fire-flame-curved"></i> Ember &amp; Oak</span>
+  <span class="footer-tagline">Crafted with passion · Served with grace</span>
+</footer>

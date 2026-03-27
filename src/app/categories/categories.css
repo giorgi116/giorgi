@@ -1,0 +1,33 @@
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--stone);
+  padding: 9px 20px;
+  border: 1.5px solid var(--border-soft);
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all var(--t);
+  background: var(--card-bg);
+}
+
+li:hover {
+  border-color: var(--terracotta);
+  color: var(--terracotta);
+}
+
+li.current {
+  background: var(--charcoal);
+  color: white;
+  border-color: var(--charcoal);
+}

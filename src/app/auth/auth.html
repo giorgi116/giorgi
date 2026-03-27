@@ -1,0 +1,113 @@
+<div class="auth-page">
+
+  <div class="auth-bg">
+    <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&q=80" alt="" />
+    <div class="auth-bg-overlay"></div>
+  </div>
+
+  <div class="auth-forms">
+
+    <div class="auth-card">
+      <div class="auth-card-header">
+        <p class="auth-eyebrow">New Guest</p>
+        <h2 class="auth-title">Create Account</h2>
+        <div class="auth-rule"></div>
+      </div>
+
+      <form [formGroup]="registerInfo" (ngSubmit)="register()">
+        @if (registerSMS()) {
+          <div class="auth-msg" [class.success]="registerSMS().includes('successful')">
+            <i class="fa-solid fa-circle-info"></i> {{ registerSMS() }}
+          </div>
+        }
+
+        <div class="form-grid">
+          <div class="input-group">
+            <label>First Name</label>
+            <input type="text" placeholder="John" formControlName="firstName" />
+          </div>
+          <div class="input-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Doe" formControlName="lastName" />
+          </div>
+          <div class="input-group">
+            <label>Age</label>
+            <input type="number" placeholder="18+" formControlName="age" />
+          </div>
+          <div class="input-group">
+            <label>Phone</label>
+            <input type="text" placeholder="+995..." formControlName="phone" />
+          </div>
+          <div class="input-group span-2">
+            <label>Email</label>
+            <input type="email" placeholder="your@email.com" formControlName="email" />
+          </div>
+          <div class="input-group span-2">
+            <label>Password</label>
+            <input type="password" placeholder="Minimum 8 characters" formControlName="password" />
+          </div>
+          <div class="input-group span-2">
+            <label>Address</label>
+            <input type="text" placeholder="Street, City" formControlName="address" />
+          </div>
+          <div class="input-group">
+            <label>Zipcode</label>
+            <input type="text" placeholder="0000" formControlName="zipcode" />
+          </div>
+          <div class="input-group">
+            <label>Gender</label>
+            <select formControlName="gender">
+              <option value="" disabled>Select</option>
+              <option value="MALE">Male</option>
+              <option value="FEMALE">Female</option>
+              <option value="OTHER">Other</option>
+            </select>
+          </div>
+          <div class="input-group span-2">
+            <label>Avatar URL</label>
+            <input type="text" placeholder="https://..." formControlName="avatar" />
+          </div>
+        </div>
+
+        <button type="submit" class="btn-auth" [disabled]="registerInfo.invalid">
+          Create Account <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </form>
+    </div>
+
+    
+    <div class="auth-card auth-card-login">
+      <div class="auth-card-header">
+        <p class="auth-eyebrow">Welcome Back</p>
+        <h2 class="auth-title">Sign In</h2>
+        <div class="auth-rule"></div>
+      </div>
+
+      <form [formGroup]="loginInfo" (ngSubmit)="login()">
+        @if (loginSMS()) {
+          <div class="auth-msg" [class.success]="loginSMS().includes('successful')">
+            <i class="fa-solid fa-circle-info"></i> {{ loginSMS() }}
+          </div>
+        }
+        <div class="input-group">
+          <label>Email</label>
+          <input type="email" placeholder="your@email.com" formControlName="email" />
+        </div>
+        <div class="input-group" style="margin-top:16px">
+          <label>Password</label>
+          <input type="password" placeholder="Your password" formControlName="password" />
+        </div>
+        <button type="submit" class="btn-auth" [disabled]="loginInfo.invalid">
+          Sign In <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </form>
+
+      <div class="auth-brand-seal">
+        <i class="fa-solid fa-fire-flame-curved"></i>
+        <p>Ember &amp; Oak</p>
+        <span>Fine Dining Restaurant</span>
+      </div>
+    </div>
+
+  </div>
+</div>
